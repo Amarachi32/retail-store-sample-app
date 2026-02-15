@@ -61,10 +61,10 @@ resource "helm_release" "aws_load_balancer_controller" {
 
 resource "helm_release" "retail_app" {
   name             = "retail-store-sample-app" 
-  repository = "https://aws-containers.github.io/retail-store-sample-app"
-  chart      = "retail-store-sample-app"
+  repository = "oci://public.ecr.aws/aws-containers"
+  chart      = "retail-store-sample-chart"
   namespace  = kubernetes_namespace_v1.retail_app.metadata[0].name
-  version    = "1.0.0" # approximate
+  version    = "0.6.0" # Using a specific version from ECR Public
 
   set {
     name  = "catalog.mysql.host"
