@@ -6,7 +6,7 @@
 ---
 
 ## 1. Git Repository Link
-**Repository:** [https://github.com/Amarachi32/retail-store-sample-app/tree](https://github.com/Amarachi32/retail-store-sample-app/tree)
+**Repository:** [https://github.com/Amarachi32/retail-store-sample-app](https://github.com/Amarachi32/retail-store-sample-app)
 
 *Note: The infrastructure code, pipeline configurations, and application manifests are located in this repository.*
 
@@ -88,7 +88,7 @@ To assist the grading script, a JSON representation of the infrastructure output
 
 ## 6. Verification
 ### Application URL
-- **Load Balancer URL**: [http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com](http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com) 
+- **Load Balancer URL**: [http://k8s-retailap-retailst-17d19cf248-323046825.us-east-1.elb.amazonaws.com](http://k8s-retailap-retailst-17d19cf248-323046825.us-east-1.elb.amazonaws.com) 
 
-http://k8s-retailap-retailst-17d19cf248-323046825.us-east-1.elb.amazonaws.com
+
 - **Status**: Deployed & Accessible
