@@ -62,9 +62,9 @@ resource "helm_release" "aws_load_balancer_controller" {
 resource "helm_release" "retail_app" {
   name             = "retail-store-sample-app" 
   repository = "oci://public.ecr.aws/aws-containers"
-  chart      = "retail-store-sample-chart"
+  chart      = "retail-store-sample-ui-chart"
   namespace  = kubernetes_namespace_v1.retail_app.metadata[0].name
-  version    = "0.6.0" # Using a specific version from ECR Public
+  version    = "1.4.0" # Latest stable version
 
   set {
     name  = "catalog.mysql.host"
