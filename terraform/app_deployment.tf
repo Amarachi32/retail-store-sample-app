@@ -3,7 +3,7 @@
 ################################################################################
 
 # Create Namespace
-resource "kubernetes_namespace" "retail_app" {
+resource "kubernetes_namespace_v1" "retail_app" {
   metadata {
     name = "retail-app"
   }

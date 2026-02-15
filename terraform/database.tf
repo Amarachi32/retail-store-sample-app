@@ -63,6 +63,7 @@ module "mysql_catalog" {
   # Disable deletion protection for student environment
   deletion_protection = false
   skip_final_snapshot = true
+  manage_master_user_password = false
 
   tags = {
     Project = "Bedrock"
@@ -94,6 +95,7 @@ module "postgres_orders" {
 
   deletion_protection = false
   skip_final_snapshot = true
+  manage_master_user_password = false
 
   tags = {
     Project = "Bedrock"
