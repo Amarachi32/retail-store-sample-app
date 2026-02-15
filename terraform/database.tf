@@ -117,7 +117,7 @@ module "postgres_orders" {
 }
 
 # Store credentials in Kubernetes Secrets for the App to use
-resource "kubernetes_secret" "db_credentials" {
+resource "kubernetes_secret_v1" "db_credentials" {
   metadata {
     name = "db-credentials"
     namespace = "retail-app"
