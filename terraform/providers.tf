@@ -11,8 +11,8 @@ terraform {
       version = ">= 2.20"
     }
     helm = {
-      source  = "hashicorp/helm"
-      version = ">= 2.10"
+      source  = "registry.terraform.io/hashicorp/helm"
+      version = "~> 2.10"
     }
     random = {
       source  = "hashicorp/random"
@@ -22,7 +22,7 @@ terraform {
 
   # Backend configuration - MUST run init with -backend-config or un-comment after creating resources
   # backend "s3" {
-  #   bucket         = "terraform-state-bedrock-alt-soe-025-0959" # Change this to your state bucket
+  #   bucket         = "terraform-state-bedrock-alt-soe-025-0959" # Change this to my state bucket
   #   key            = "project-bedrock/terraform.tfstate"
   #   region         = "us-east-1"
   #   dynamodb_table = "terraform-state-locking"
