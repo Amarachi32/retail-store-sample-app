@@ -55,7 +55,7 @@ module "eks" {
   subnet_ids = module.vpc.private_subnets
 
   # 4.4 Observability: Control Plane Logging
-  cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
+  # cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   # EKS Addons
   cluster_addons = {
