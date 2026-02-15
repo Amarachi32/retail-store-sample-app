@@ -37,6 +37,17 @@ resource "aws_db_subnet_group" "default" {
   }
 }
 
+# Generate random passwords
+resource "random_password" "mysql_password" {
+  length  = 16
+  special = false
+}
+
+resource "random_password" "postgres_password" {
+  length  = 16
+  special = false
+}
+
 # 1. MySQL for Catalog Service
 module "mysql_catalog" {
   source  = "terraform-aws-modules/rds/aws"
@@ -56,6 +67,8 @@ module "mysql_catalog" {
   db_name  = "catalog_db"
   username = "catalog_user"
   port     = 3306
+
+  password = random_password.mysql_password.result
 
   db_subnet_group_name   = aws_db_subnet_group.default.name
   vpc_security_group_ids = [aws_security_group.rds.id]
@@ -89,6 +102,7 @@ module "postgres_orders" {
   db_name  = "orders_db"
   username = "orders_user"
   port     = 5432
+  password = random_password.postgres_password.result
 
   db_subnet_group_name   = aws_db_subnet_group.default.name
   vpc_security_group_ids = [aws_security_group.rds.id]
@@ -111,13 +125,13 @@ resource "kubernetes_secret" "db_credentials" {
 
   data = {
     mysql_endpoint = module.mysql_catalog.db_instance_address
-    mysql_password = module.mysql_catalog.db_instance_password
+    mysql_password = random_password.mysql_password.result
     mysql_username = "catalog_user"
     
     postgres_endpoint = module.postgres_orders.db_instance_address
-    postgres_password = module.postgres_orders.db_instance_password
+    postgres_password = random_password.postgres_password.result
     postgres_username = "orders_user"
   }
   
-  depends_on = [kubernetes_namespace.retail_app]
+  depends_on = [kubernetes_namespace_v1.retail_app]
 }

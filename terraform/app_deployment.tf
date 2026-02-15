@@ -63,7 +63,7 @@ resource "helm_release" "retail_app" {
   name             = "retail-store-sample-app" 
   repository = "https://aws-containers.github.io/retail-store-sample-app"
   chart      = "retail-store-sample-app"
-  namespace  = kubernetes_namespace.retail_app.metadata[0].name
+  namespace  = kubernetes_namespace_v1.retail_app.metadata[0].name
   version    = "1.0.0" # approximate
 
   set {
@@ -113,7 +113,7 @@ resource "helm_release" "retail_app" {
 resource "kubernetes_ingress_v1" "retail_ingress" {
   metadata {
     name      = "retail-store-ingress"
-    namespace = kubernetes_namespace.retail_app.metadata[0].name
+    namespace = kubernetes_namespace_v1.retail_app.metadata[0].name
     annotations = {
       "kubernetes.io/ingress.class"               = "alb"
       "alb.ingress.kubernetes.io/scheme"          = "internet-facing"
