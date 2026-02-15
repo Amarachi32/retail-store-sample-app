@@ -59,27 +59,12 @@ resource "helm_release" "aws_load_balancer_controller" {
 ################################################################################
 
 resource "helm_release" "retail_app" {
-  name             = "retail-store-sample-app"
-  # Using the official chart if available, or a generic one. 
-  # Since there isn't a guaranteed stable official helm chart URL provided in the prompt, 
-  # we will use the one from the public EKS workshop or similar reliable source, 
-  # OR assume the user has a local chart. 
-  # For safety, I will point to the bitnami or similar repository if not specific.
-  # HOWEVER, the prompt implies "Deploy the retail-store-sample-app". 
-  # I will use the OCI registry or a known public chart. 
-  # Let's use the one from the generated implementation plan assumption or generic deployment.
-  # Better constraint: The user likely needs to clone the app repo. 
-  # I will assume the helm chart is available locally OR use the aws-samples repo.
-  
+  name             = "retail-store-sample-app" 
   repository = "https://aws-containers.github.io/retail-store-sample-app"
   chart      = "retail-store-sample-app"
   namespace  = kubernetes_namespace.retail_app.metadata[0].name
   version    = "1.0.0" # approximate
 
-  # Overrides for Bonus Persistence (Connecting to RDS)
-  # NOTE: The actual values structure depends on the specific chart. 
-  # I am making a best-effort assumption based on standard charts.
-  
   set {
     name  = "catalog.mysql.host"
     value = module.mysql_catalog.db_instance_address
@@ -123,8 +108,6 @@ resource "helm_release" "retail_app" {
 # Ingress Resource (Explicit - if not handled by Helm)
 ################################################################################
 # Note: if the Helm chart creates ingress, this is redundant. 
-# But to ensure strict compliance with "5.2 Create an Ingress resource", 
-# I will define one here for the UI service specifically.
 
 resource "kubernetes_ingress_v1" "retail_ingress" {
   metadata {
