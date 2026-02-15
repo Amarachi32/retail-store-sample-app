@@ -6,7 +6,7 @@
 ---
 
 ## 1. Git Repository Link
-**Repository:** [https://github.com/Amarachi32/retail-store-sample-app/tree/capstone](https://github.com/Amarachi32/retail-store-sample-app/tree/capstone)
+**Repository:** [https://github.com/Amarachi32/retail-store-sample-app/tree](https://github.com/Amarachi32/retail-store-sample-app/tree)
 
 *Note: The infrastructure code, pipeline configurations, and application manifests are located in this repository.*
 
@@ -52,7 +52,7 @@ graph TD
 ### How to Trigger the Pipeline
 The CI/CD pipeline is configured using GitHub Actions.
 1.  **Push Changes**: The pipeline automatically triggers on a push to the `main` branch.
-    *   *Note: Since you are on the `capstone` branch, ensure you create a Pull Request to `main` or update `.github/workflows/terraform.yml` to trigger on `capstone`.*
+
 2.  **Monitor Action**: Go to the **Actions** tab in the GitHub repository to see the "Terraform Infrastructure" workflow execution.
 
 ### Accessing the Retail Store
@@ -88,5 +88,7 @@ To assist the grading script, a JSON representation of the infrastructure output
 
 ## 6. Verification
 ### Application URL
-- **Load Balancer URL**: [http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com](http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com) (Please allow a few minutes for DNS propagation)
+- **Load Balancer URL**: [http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com](http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com) 
+
+http://k8s-retailap-retailst-17d19cf248-323046825.us-east-1.elb.amazonaws.com
 - **Status**: Deployed & Accessible
