@@ -72,7 +72,7 @@ resource "helm_release" "retail_app" {
   }
   
   set {
-    name  = "orders.postgres.host"
+    name  = "orders.postgres.host"    
     value = module.postgres_orders.db_instance_address
   }
   
@@ -80,7 +80,7 @@ resource "helm_release" "retail_app" {
   set {
     name  = "ui.ingress.enabled"
     value = "true"
-  }
+  }   
   
   set {
     name  = "ui.ingress.annotations.kubernetes\\.io/ingress\\.class"
@@ -130,7 +130,7 @@ resource "kubernetes_ingress_v1" "retail_ingress" {
           path_type = "Prefix"
           backend {
             service {
-              name = "ui" # Assumption: Service name is 'ui'
+              name = "retail-store-sample-app-ui" # Matches Helm chart service name
               port {
                 number = 80
               }

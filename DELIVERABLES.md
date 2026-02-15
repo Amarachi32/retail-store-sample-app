@@ -85,3 +85,8 @@ To assist the grading script, a JSON representation of the infrastructure output
     terraform output -json > grading.json
     ```
 3.  **Commit** the generated `grading.json` file to the root of your repository and push it.
+
+## 6. Verification
+### Application URL
+- **Load Balancer URL**: [http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com](http://k8s-retailap-retailst-8798558661-1254347209.us-east-1.elb.amazonaws.com) (Please allow a few minutes for DNS propagation)
+- **Status**: Deployed & Accessible
